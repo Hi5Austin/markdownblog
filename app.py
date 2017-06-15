@@ -2,6 +2,7 @@ from flask import Flask, render_template
 import os
 
 app = Flask(__name__)
+app.debug = True
 
 @app.route('/')
 def index():
@@ -16,4 +17,4 @@ def articles():
 
 @app.route('/articles/<name>')
 def show_article(name):
-    pass
+    return app.send_static_file(name+'.html')
